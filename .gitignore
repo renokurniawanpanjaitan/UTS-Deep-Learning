@@ -1,0 +1,9 @@
+.venv/
+.gradio/
+dataset/
+models/
+*.h5
+*.pt
+*.pth
+*.onnx
+__pycache__/
