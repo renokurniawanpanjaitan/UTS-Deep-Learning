@@ -25,15 +25,6 @@ streamlit run app.py
 Tautan: deteksi-kematangan-pisang-i5zkundhm7njm9qqtyceip.streamlit.app
 
 
-## Isi folder
-| Berkas | Fungsi |
-|---|---|
-| `KlasifikasiKematanganPisang.ipynb` | Notebook utama: data, EDA, tf.data, MLP, CNN, optimasi, evaluasi, inferensi (dokumentasi + source code) |
-| `predict.py` | Prediksi dari gambar baru lewat terminal |
-| `app_demo.py` | Demo web (Gradio) untuk video presentasi |
-| `requirements.txt` | Daftar library |
-| `models/` | Terisi otomatis setelah notebook dijalankan |
-
 
 ## Pemetaan ke CPMK
 | CPMK | Bagian notebook |
