@@ -1,0 +1,5 @@
+{
+  "threshold": 0.75,
+  "target_acc": 0.98,
+  "chosen_on": "validation"
+}

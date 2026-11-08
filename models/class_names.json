@@ -1,0 +1,9 @@
+{
+  "class_names": [
+    "overripe",
+    "ripe",
+    "unripe"
+  ],
+  "img_size": 128,
+  "best_model": "mlp_adam"
+}
