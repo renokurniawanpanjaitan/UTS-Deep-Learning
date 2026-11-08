@@ -1,8 +1,3 @@
-"""Fungsi bersama untuk inferensi: preprocessing, Grad-CAM, dan keputusan berbasis confidence threshold.
-
-Dipakai oleh: app_demo.py, predict.py, dan notebook Fitur_Unik.
-Preprocessing di sini IDENTIK dengan pipeline training (resize -> bagi 255).
-"""
 import json
 import os
 
@@ -12,7 +7,6 @@ from tensorflow import keras
 
 
 def load_assets(model_path, classes_path, config_path=None, default_threshold=0.70):
-    """Muat model, nama kelas, ukuran gambar, dan ambang keyakinan (threshold)."""
     model = keras.models.load_model(model_path)
     with open(classes_path) as f:
         meta = json.load(f)
@@ -24,7 +18,6 @@ def load_assets(model_path, classes_path, config_path=None, default_threshold=0.
 
 
 def to_tensor(image, size):
-    """Terima path file ATAU array/PIL, kembalikan tensor float32 (size, size, 3) skala 0-1."""
     if isinstance(image, str):
         img = tf.io.decode_image(tf.io.read_file(image), channels=3, expand_animations=False)
     else:
@@ -38,14 +31,12 @@ def to_tensor(image, size):
 
 
 def decide(probs, class_names, threshold):
-    """Fitur unik 2: tolak prediksi jika keyakinan tertinggi < threshold."""
     k = int(np.argmax(probs))
     conf = float(probs[k])
     return class_names[k], conf, conf >= threshold
 
 
 def find_target_layer(model):
-    """Lapisan aktivasi ReLU terakhir (keluaran blok konvolusi terakhir) untuk Grad-CAM."""
     for layer in reversed(model.layers):
         if isinstance(layer, keras.layers.ReLU):
             return layer.name
@@ -56,7 +47,6 @@ def find_target_layer(model):
 
 
 def make_gradcam(model, x, class_index=None, layer_name=None):
-    """Fitur unik 1: Grad-CAM. x = tensor (H, W, 3) skala 0-1. Mengembalikan heatmap (H, W) skala 0-1."""
     target = layer_name or find_target_layer(model)
     if target is None:
         raise ValueError("Model tidak punya lapisan konvolusi; Grad-CAM hanya untuk CNN.")
@@ -80,7 +70,6 @@ def make_gradcam(model, x, class_index=None, layer_name=None):
 
 
 def overlay(x, heatmap, alpha=0.4):
-    """Tumpuk heatmap berwarna di atas gambar. Mengembalikan array uint8 (H, W, 3)."""
     import matplotlib
     heat = matplotlib.colormaps["jet"](heatmap)[..., :3]
     out = (1 - alpha) * np.asarray(x) + alpha * heat
