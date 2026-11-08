@@ -1,8 +1,5 @@
 # Proyek 1 UTS Deep Learning: Klasifikasi Kematangan Pisang dengan CNN
 
-Folder ini mengikuti format pengumpulan `UTS DEEP LEARNING`.
-**Ganti nama folder** menjadi nama kelompok dan kelas Anda sebelum dikumpulkan.
-
 ## Isi folder
 | Berkas | Fungsi |
 |---|---|
