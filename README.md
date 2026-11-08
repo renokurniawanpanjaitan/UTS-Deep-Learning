@@ -10,7 +10,6 @@ dilengkapi dua fitur unik: **Grad-CAM** dan **confidence threshold** (pesan "TID
 - `inference_utils.py` : fungsi inferensi, Grad-CAM, dan keputusan threshold
 - `models/` : `best_model.keras`, `class_names.json`, `inference_config.json`
 - `requirements.txt` : dependensi
-- `ProyekKlasifikasiKematanganPisang.ipynb` :Notebook utama: data, EDA, tf.data, MLP, CNN, optimasi, evaluasi, inferensi (dokumentasi + source code)
 
 ## Cara menjalankan lokal
 ```
